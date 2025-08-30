@@ -1,0 +1,1687 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Royalust - Transmute Lust. Build Legacy. Channel sexual energy into creative life force.">
+    <title>Royalust - Transmute Lust. Build Legacy.</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Cormorant+SC:wght@300;400;500;600;700&family=EB+Garamond:wght@400;500;600&family=Inter:wght@300;400;500;600&display=swap');
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0) translateX(0) rotate(0deg); }
+            25% { transform: translateY(-20px) translateX(10px) rotate(90deg); }
+            50% { transform: translateY(10px) translateX(-10px) rotate(180deg); }
+            75% { transform: translateY(-10px) translateX(5px) rotate(270deg); }
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 0.8; transform: scale(1.1); }
+        }
+        
+        @keyframes energy-flow {
+            0% { transform: translateY(100vh) scale(0); opacity: 0; }
+            10% { opacity: 0.5; }
+            90% { opacity: 0.5; }
+            100% { transform: translateY(-100vh) scale(1); opacity: 0; }
+        }
+        
+        .energy-particles {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            z-index: 1;
+        }
+        
+        .particle {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: var(--gold-muted);
+            border-radius: 50%;
+            filter: blur(1px);
+            animation: energy-flow 15s linear infinite;
+        }
+        
+        .particle:nth-child(1) { left: 10%; animation-delay: 0s; animation-duration: 12s; }
+        .particle:nth-child(2) { left: 20%; animation-delay: 2s; animation-duration: 14s; }
+        .particle:nth-child(3) { left: 30%; animation-delay: 4s; animation-duration: 16s; }
+        .particle:nth-child(4) { left: 40%; animation-delay: 6s; animation-duration: 13s; }
+        .particle:nth-child(5) { left: 50%; animation-delay: 8s; animation-duration: 15s; }
+        .particle:nth-child(6) { left: 60%; animation-delay: 10s; animation-duration: 17s; }
+        .particle:nth-child(7) { left: 70%; animation-delay: 12s; animation-duration: 14s; }
+        .particle:nth-child(8) { left: 80%; animation-delay: 14s; animation-duration: 16s; }
+        .particle:nth-child(9) { left: 90%; animation-delay: 16s; animation-duration: 12s; }
+        .particle:nth-child(10) { left: 15%; animation-delay: 3s; animation-duration: 18s; }
+        
+        .glow-orb {
+            position: fixed;
+            width: 400px;
+            height: 400px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(184, 149, 111, 0.1) 0%, transparent 70%);
+            filter: blur(60px);
+            pointer-events: none;
+            z-index: 0;
+            animation: float 20s ease-in-out infinite;
+        }
+        
+        .glow-orb:nth-child(1) {
+            top: -200px;
+            left: -200px;
+            animation-duration: 25s;
+        }
+        
+        .glow-orb:nth-child(2) {
+            bottom: -200px;
+            right: -200px;
+            animation-duration: 30s;
+            animation-delay: 5s;
+        }
+        
+        .glow-orb:nth-child(3) {
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(31, 15, 58, 0.3) 0%, transparent 60%);
+            animation-duration: 35s;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --violet-deep: #0a0612;
+            --violet-dark: #140a24;
+            --violet-medium: #1f0f3a;
+            --indigo-dark: #0c0818;
+            --gold-muted: #b8956f;
+            --gold-light: #d4b896;
+            --gold-dim: #8b7355;
+            --text-light: #e8e3f5;
+            --text-dim: #a897c4;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+        
+        body {
+            font-family: 'EB Garamond', serif;
+            background: #000000;
+            color: var(--text-light);
+            overflow-x: hidden;
+            position: relative;
+            min-height: 100vh;
+            font-size: 16px;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(ellipse at top, rgba(31, 15, 58, 0.8) 0%, transparent 50%),
+                radial-gradient(ellipse at bottom, rgba(12, 8, 24, 0.9) 0%, transparent 50%),
+                radial-gradient(circle at 20% 80%, rgba(184, 149, 111, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(184, 149, 111, 0.03) 0%, transparent 50%),
+                radial-gradient(circle at 50% 50%, rgba(31, 15, 58, 0.4) 0%, transparent 70%);
+            pointer-events: none;
+            z-index: 1;
+        }
+        
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(2px 2px at 20% 30%, rgba(184, 149, 111, 0.2), transparent),
+                radial-gradient(2px 2px at 60% 70%, rgba(184, 149, 111, 0.15), transparent),
+                radial-gradient(1px 1px at 90% 10%, rgba(232, 227, 245, 0.15), transparent),
+                radial-gradient(1px 1px at 15% 80%, rgba(232, 227, 245, 0.1), transparent),
+                radial-gradient(1px 1px at 45% 45%, rgba(184, 149, 111, 0.08), transparent),
+                radial-gradient(1px 1px at 75% 25%, rgba(232, 227, 245, 0.08), transparent),
+                radial-gradient(1px 1px at 35% 65%, rgba(184, 149, 111, 0.05), transparent);
+            background-size: 400px 400px, 300px 300px, 250px 250px, 350px 350px, 450px 450px, 500px 500px, 550px 550px;
+            animation: shimmer 40s linear infinite;
+            pointer-events: none;
+            z-index: 1;
+            opacity: 0.8;
+        }
+        
+        @keyframes shimmer {
+            0% { transform: translate(0, 0) rotate(0deg); }
+            100% { transform: translate(30px, 30px) rotate(5deg); }
+        }
+        
+        /* Add sacred geometry overlay */
+        .sacred-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            opacity: 0.03;
+            background-image: 
+                repeating-linear-gradient(45deg, transparent, transparent 100px, rgba(184, 149, 111, 0.1) 100px, rgba(184, 149, 111, 0.1) 101px),
+                repeating-linear-gradient(-45deg, transparent, transparent 100px, rgba(184, 149, 111, 0.1) 100px, rgba(184, 149, 111, 0.1) 101px);
+            animation: drift 60s linear infinite;
+        }
+        
+        @keyframes drift {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(50px, 50px); }
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        @media (max-width: 768px) {
+            .glow-orb {
+                width: 300px;
+                height: 300px;
+            }
+            
+            .energy-particles {
+                display: none; /* Hide particles on mobile for performance */
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .glow-orb {
+                width: 200px;
+                height: 200px;
+            }
+            
+            .sacred-bg {
+                opacity: 0.02; /* Reduce opacity on small screens */
+            }
+        }
+        
+        /* Header */
+        header {
+            padding: 30px 0;
+            backdrop-filter: blur(20px) saturate(150%);
+            background: linear-gradient(180deg, rgba(10, 6, 18, 0.9) 0%, rgba(10, 6, 18, 0.7) 100%);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid rgba(184, 149, 111, 0.15);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .wordmark {
+            font-family: 'Cinzel Decorative', serif;
+            font-size: 32px;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--gold-light), var(--gold-muted), var(--gold-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: 2px;
+            text-shadow: 0 0 30px rgba(184, 149, 111, 0.5);
+            animation: glow-text 3s ease-in-out infinite alternate;
+        }
+        
+        @keyframes glow-text {
+            0% { filter: brightness(1) drop-shadow(0 0 20px rgba(184, 149, 111, 0.4)); }
+            100% { filter: brightness(1.2) drop-shadow(0 0 30px rgba(212, 184, 150, 0.6)); }
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 35px;
+            align-items: center;
+        }
+        
+        .nav-links a {
+            font-family: 'Inter', sans-serif;
+            color: var(--text-dim);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 400;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--gold-light), transparent);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-links a:hover {
+            color: var(--gold-light);
+            text-shadow: 0 0 15px rgba(212, 184, 150, 0.6);
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        .nav-cta {
+            font-family: 'Inter', sans-serif;
+            padding: 10px 24px;
+            background: linear-gradient(135deg, var(--gold-dim), var(--gold-muted));
+            color: var(--violet-deep);
+            border-radius: 25px;
+            font-weight: 600;
+            font-size: 13px;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(184, 149, 111, 0.2);
+        }
+        
+        .nav-cta:hover {
+            background: linear-gradient(135deg, var(--gold-muted), var(--gold-light));
+            box-shadow: 0 8px 25px rgba(184, 149, 111, 0.5);
+            transform: translateY(-2px);
+        }
+        
+        .nav-cta:hover::after {
+            width: 0;
+        }
+        
+        /* Mobile Navigation */
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--gold-light);
+            font-size: 28px;
+            cursor: pointer;
+            font-family: 'Inter', sans-serif;
+            padding: 5px;
+            transition: all 0.3s ease;
+        }
+        
+        .mobile-menu-toggle:hover {
+            color: var(--gold-muted);
+            text-shadow: 0 0 10px rgba(184, 149, 111, 0.4);
+        }
+        
+        @media (max-width: 768px) {
+            header {
+                padding: 20px 0;
+            }
+            
+            .wordmark {
+                font-size: 24px;
+            }
+            
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: rgba(10, 6, 18, 0.95);
+                flex-direction: column;
+                padding: 20px;
+                gap: 20px;
+                border-bottom: 1px solid rgba(184, 149, 111, 0.2);
+                backdrop-filter: blur(20px);
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .mobile-menu-toggle {
+                display: block;
+            }
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding: 140px 0;
+            text-align: center;
+            position: relative;
+            background: radial-gradient(ellipse at center, rgba(184, 149, 111, 0.05) 0%, transparent 50%);
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(31, 15, 58, 0.2) 0%, transparent 60%);
+            filter: blur(100px);
+            pointer-events: none;
+            animation: pulse 8s ease-in-out infinite;
+        }
+        
+        .hero h1 {
+            font-family: 'Cinzel Decorative', serif;
+            font-size: 72px;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--gold-light) 0%, var(--gold-muted) 25%, var(--gold-light) 50%, var(--gold-muted) 75%, var(--gold-light) 100%);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 25px;
+            letter-spacing: 2px;
+            animation: shine 3s linear infinite, glow 3s ease-in-out infinite alternate;
+            position: relative;
+            z-index: 2;
+            line-height: 1.1;
+        }
+        
+        @keyframes shine {
+            0% { background-position: 0% center; }
+            100% { background-position: 200% center; }
+        }
+        
+        @keyframes glow {
+            0% { filter: drop-shadow(0 0 25px rgba(184, 149, 111, 0.6)); }
+            100% { filter: drop-shadow(0 0 40px rgba(212, 184, 150, 0.9)); }
+        }
+        
+        .hero-subcopy {
+            font-family: 'EB Garamond', serif;
+            font-size: 20px;
+            line-height: 1.7;
+            color: var(--text-dim);
+            margin-bottom: 50px;
+            max-width: 650px;
+            margin-left: auto;
+            margin-right: auto;
+            letter-spacing: 0.5px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            gap: 25px;
+            justify-content: center;
+            margin-bottom: 80px;
+            position: relative;
+            z-index: 2;
+            flex-wrap: wrap;
+        }
+        
+        .btn-primary {
+            font-family: 'Inter', sans-serif;
+            padding: 18px 40px;
+            background: linear-gradient(135deg, var(--gold-muted), var(--gold-dim), var(--gold-muted));
+            background-size: 200% auto;
+            color: var(--violet-deep);
+            border: none;
+            border-radius: 35px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            text-decoration: none;
+            display: inline-block;
+            letter-spacing: 1px;
+            box-shadow: 0 8px 25px rgba(184, 149, 111, 0.3);
+            animation: shine-slow 5s linear infinite;
+        }
+        
+        @keyframes shine-slow {
+            0% { background-position: 0% center; }
+            100% { background-position: 200% center; }
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 15px 40px rgba(184, 149, 111, 0.5);
+        }
+        
+        .btn-secondary {
+            font-family: 'Inter', sans-serif;
+            padding: 18px 40px;
+            background: rgba(184, 149, 111, 0.05);
+            color: var(--gold-light);
+            border: 1px solid var(--gold-dim);
+            border-radius: 35px;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            text-decoration: none;
+            display: inline-block;
+            letter-spacing: 1px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .btn-secondary:hover {
+            background: rgba(184, 149, 111, 0.15);
+            border-color: var(--gold-light);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(184, 149, 111, 0.3);
+        }
+        
+        @media (max-width: 768px) {
+            .hero {
+                padding: 80px 0;
+            }
+            
+            .hero h1 {
+                font-size: 42px;
+                margin-bottom: 20px;
+            }
+            
+            .hero-subcopy {
+                font-size: 18px;
+                margin-bottom: 40px;
+                padding: 0 20px;
+            }
+            
+            .hero-buttons {
+                gap: 15px;
+                padding: 0 20px;
+            }
+            
+            .btn-primary, .btn-secondary {
+                padding: 15px 30px;
+                font-size: 14px;
+                width: 100%;
+                max-width: 280px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 32px;
+            }
+            
+            .hero-subcopy {
+                font-size: 16px;
+            }
+        }
+        
+        .sigil {
+            width: 250px;
+            height: 250px;
+            margin: 0 auto;
+            position: relative;
+            animation: rotate 45s linear infinite;
+        }
+        
+        @keyframes rotate {
+            0% { transform: rotate(0deg) scale(1); }
+            50% { transform: rotate(180deg) scale(1.05); }
+            100% { transform: rotate(360deg) scale(1); }
+        }
+        
+        .sigil svg {
+            width: 100%;
+            height: 100%;
+            filter: drop-shadow(0 0 40px rgba(184, 149, 111, 0.6));
+        }
+        
+        .sigil-outer {
+            animation: rotate 60s linear infinite reverse;
+        }
+        
+        .sigil-inner {
+            animation: pulse 4s ease-in-out infinite;
+        }
+        
+        @media (max-width: 768px) {
+            .sigil {
+                width: 180px;
+                height: 180px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .sigil {
+                width: 150px;
+                height: 150px;
+            }
+        }
+        
+        /* Code Section */
+        .code-section {
+            padding: 120px 0;
+            background: linear-gradient(180deg, rgba(20, 10, 36, 0.4) 0%, rgba(12, 8, 24, 0.6) 100%);
+            position: relative;
+        }
+        
+        .code-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--gold-dim), transparent);
+            opacity: 0.5;
+        }
+        
+        .code-section h2 {
+            font-family: 'Cormorant SC', serif;
+            font-size: 48px;
+            font-weight: 600;
+            text-align: center;
+            background: linear-gradient(135deg, var(--gold-light), var(--gold-muted));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 70px;
+            letter-spacing: 3px;
+            filter: drop-shadow(0 0 20px rgba(184, 149, 111, 0.4));
+        }
+        
+        .pillars {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 40px;
+        }
+        
+        .pillar {
+            text-align: center;
+            padding: 50px 35px;
+            background: linear-gradient(135deg, rgba(31, 15, 58, 0.3) 0%, rgba(20, 10, 36, 0.4) 100%);
+            border: 1px solid rgba(184, 149, 111, 0.15);
+            border-radius: 15px;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .pillar::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(184, 149, 111, 0.1) 0%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            pointer-events: none;
+        }
+        
+        .pillar:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 25px 50px rgba(184, 149, 111, 0.3);
+            border-color: var(--gold-dim);
+            background: linear-gradient(135deg, rgba(31, 15, 58, 0.4) 0%, rgba(20, 10, 36, 0.5) 100%);
+        }
+        
+        .pillar:hover::before {
+            opacity: 1;
+        }
+        
+        .pillar h3 {
+            font-family: 'Cormorant SC', serif;
+            font-size: 32px;
+            font-weight: 600;
+            background: linear-gradient(135deg, var(--gold-muted), var(--gold-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+        }
+        
+        .pillar p {
+            font-family: 'EB Garamond', serif;
+            color: var(--text-dim);
+            line-height: 1.7;
+            font-size: 17px;
+            letter-spacing: 0.3px;
+        }
+        
+        @media (max-width: 768px) {
+            .code-section {
+                padding: 80px 0;
+            }
+            
+            .code-section h2 {
+                font-size: 36px;
+                margin-bottom: 50px;
+            }
+            
+            .pillars {
+                grid-template-columns: 1fr;
+                gap: 30px;
+                padding: 0 20px;
+            }
+            
+            .pillar {
+                padding: 40px 25px;
+            }
+            
+            .pillar h3 {
+                font-size: 28px;
+            }
+            
+            .pillar p {
+                font-size: 16px;
+            }
+        }
+        
+        /* Lineup Section */
+        .lineup {
+            padding: 100px 0;
+        }
+        
+        .lineup h2 {
+            font-family: 'Cormorant SC', serif;
+            font-size: 48px;
+            font-weight: 600;
+            text-align: center;
+            background: linear-gradient(135deg, var(--gold-light), var(--gold-muted));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 60px;
+            letter-spacing: 3px;
+            filter: drop-shadow(0 0 20px rgba(184, 149, 111, 0.4));
+        }
+        
+        .guides-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 30px;
+        }
+        
+        .guide-card {
+            text-align: center;
+            position: relative;
+        }
+        
+        .avatar {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 15px;
+            background: linear-gradient(135deg, var(--violet-medium), var(--indigo-dark));
+            border-radius: 50%;
+            border: 2px solid var(--gold-dim);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .avatar:hover {
+            transform: scale(1.05);
+            border-color: var(--gold-light);
+            box-shadow: 0 10px 30px rgba(184, 149, 111, 0.3);
+        }
+        
+        .avatar::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 40%;
+            height: 40%;
+            background: var(--gold-dim);
+            border-radius: 50%;
+            opacity: 0.3;
+        }
+        
+        .guide-card h4 {
+            font-family: 'Cormorant SC', serif;
+            font-size: 18px;
+            color: var(--gold-muted);
+            margin-bottom: 8px;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+        
+        .guide-card p {
+            font-family: 'EB Garamond', serif;
+            font-size: 14px;
+            color: var(--text-dim);
+            line-height: 1.5;
+        }
+        
+        .coming-soon {
+            position: absolute;
+            top: 0;
+            right: -10px;
+            background: var(--gold-dim);
+            color: var(--violet-deep);
+            padding: 2px 8px;
+            font-family: 'Inter', sans-serif;
+            font-size: 10px;
+            border-radius: 10px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+        
+        @media (max-width: 768px) {
+            .lineup {
+                padding: 80px 20px;
+            }
+            
+            .lineup h2 {
+                font-size: 36px;
+            }
+            
+            .guides-grid {
+                grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+                gap: 25px;
+            }
+            
+            .avatar {
+                width: 100px;
+                height: 100px;
+            }
+            
+            .guide-card h4 {
+                font-size: 16px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .guides-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        /* Membership Section */
+        .membership {
+            padding: 120px 0;
+            background: linear-gradient(180deg, rgba(12, 8, 24, 0.5) 0%, rgba(20, 10, 36, 0.3) 100%);
+            position: relative;
+        }
+        
+        .membership::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            width: 100%;
+            height: 400px;
+            background: radial-gradient(ellipse at center, rgba(184, 149, 111, 0.03) 0%, transparent 60%);
+            transform: translateY(-50%);
+            pointer-events: none;
+        }
+        
+        .membership h2 {
+            font-family: 'Cormorant SC', serif;
+            font-size: 48px;
+            font-weight: 600;
+            text-align: center;
+            background: linear-gradient(135deg, var(--gold-light), var(--gold-muted));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 70px;
+            letter-spacing: 3px;
+            filter: drop-shadow(0 0 20px rgba(184, 149, 111, 0.4));
+        }
+        
+        .tiers {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 35px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .tier-card {
+            padding: 50px 35px;
+            background: linear-gradient(135deg, rgba(31, 15, 58, 0.3) 0%, rgba(12, 8, 24, 0.4) 100%);
+            border: 1px solid rgba(184, 149, 111, 0.15);
+            border-radius: 20px;
+            text-align: center;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+        }
+        
+        .tier-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--gold-muted), transparent);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+        
+        .tier-card:hover {
+            transform: scale(1.05) translateY(-10px);
+            border-color: var(--gold-muted);
+            box-shadow: 0 30px 60px rgba(184, 149, 111, 0.4);
+            background: linear-gradient(135deg, rgba(31, 15, 58, 0.4) 0%, rgba(12, 8, 24, 0.5) 100%);
+        }
+        
+        .tier-card:hover::before {
+            opacity: 1;
+        }
+        
+        .tier-card:nth-child(2) {
+            border-color: rgba(184, 149, 111, 0.3);
+            box-shadow: 0 15px 40px rgba(184, 149, 111, 0.2);
+        }
+        
+        .tier-card h3 {
+            font-family: 'Cormorant SC', serif;
+            font-size: 32px;
+            font-weight: 600;
+            background: linear-gradient(135deg, var(--gold-muted), var(--gold-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 15px;
+            letter-spacing: 2px;
+        }
+        
+        .price {
+            font-family: 'EB Garamond', serif;
+            font-size: 36px;
+            color: var(--gold-light);
+            margin-bottom: 25px;
+            font-weight: 400;
+            text-shadow: 0 0 20px rgba(184, 149, 111, 0.3);
+        }
+        
+        .price span {
+            font-size: 16px;
+            color: var(--text-dim);
+            text-shadow: none;
+        }
+        
+        .tier-features {
+            font-family: 'EB Garamond', serif;
+            color: var(--text-dim);
+            line-height: 1.8;
+            margin-bottom: 35px;
+            font-size: 16px;
+            letter-spacing: 0.3px;
+        }
+        
+        .tier-cta {
+            font-family: 'Inter', sans-serif;
+            padding: 14px 35px;
+            background: linear-gradient(135deg, rgba(184, 149, 111, 0.1), rgba(184, 149, 111, 0.2));
+            color: var(--gold-muted);
+            border: 1px solid var(--gold-dim);
+            border-radius: 30px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            letter-spacing: 1px;
+            backdrop-filter: blur(5px);
+        }
+        
+        .tier-cta:hover {
+            background: linear-gradient(135deg, var(--gold-dim), var(--gold-muted));
+            color: var(--violet-deep);
+            box-shadow: 0 10px 30px rgba(184, 149, 111, 0.4);
+            transform: translateY(-2px);
+        }
+        
+        @media (max-width: 768px) {
+            .membership {
+                padding: 80px 20px;
+            }
+            
+            .membership h2 {
+                font-size: 36px;
+                margin-bottom: 50px;
+            }
+            
+            .tiers {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            
+            .tier-card {
+                padding: 40px 25px;
+            }
+            
+            .tier-card h3 {
+                font-size: 28px;
+            }
+            
+            .price {
+                font-size: 32px;
+            }
+        }
+        
+        /* Retreats Section */
+        .retreats {
+            padding: 100px 0;
+            text-align: center;
+        }
+        
+        .retreats h2 {
+            font-family: 'Cormorant SC', serif;
+            font-size: 48px;
+            font-weight: 600;
+            background: linear-gradient(135deg, var(--gold-light), var(--gold-muted));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 20px;
+            letter-spacing: 3px;
+            filter: drop-shadow(0 0 20px rgba(184, 149, 111, 0.4));
+        }
+        
+        .retreats-subtitle {
+            font-family: 'EB Garamond', serif;
+            font-size: 24px;
+            color: var(--text-dim);
+            margin-bottom: 30px;
+        }
+        
+        .retreat-features {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+        
+        .retreat-features span {
+            font-family: 'EB Garamond', serif;
+            color: var(--gold-dim);
+            font-size: 16px;
+            letter-spacing: 1px;
+        }
+        
+        @media (max-width: 768px) {
+            .retreats {
+                padding: 80px 20px;
+            }
+            
+            .retreats h2 {
+                font-size: 36px;
+            }
+            
+            .retreats-subtitle {
+                font-size: 20px;
+            }
+            
+            .retreat-features {
+                gap: 15px;
+            }
+            
+            .retreat-features span {
+                font-size: 14px;
+            }
+        }
+        
+        /* Genie Juice Section */
+        .genie-juice {
+            padding: 100px 0;
+            background: rgba(30, 26, 61, 0.3);
+        }
+        
+        .product-card {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+            padding: 0 20px;
+        }
+        
+        .product-visual {
+            width: 200px;
+            height: 300px;
+            margin: 0 auto 30px;
+            background: linear-gradient(135deg, var(--violet-medium), var(--indigo-dark));
+            border-radius: 100px 100px 20px 20px;
+            border: 2px solid var(--gold-dim);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s ease;
+        }
+        
+        .product-visual:hover {
+            transform: scale(1.05);
+            border-color: var(--gold-light);
+            box-shadow: 0 20px 40px rgba(184, 149, 111, 0.3);
+        }
+        
+        .product-visual::before {
+            content: '';
+            position: absolute;
+            top: 20%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60%;
+            height: 40%;
+            background: linear-gradient(180deg, rgba(184, 149, 111, 0.2), transparent);
+            border-radius: 50%;
+            filter: blur(20px);
+        }
+        
+        .product-card h2 {
+            font-family: 'Cormorant SC', serif;
+            font-size: 42px;
+            font-weight: 600;
+            background: linear-gradient(135deg, var(--gold-light), var(--gold-muted));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+        }
+        
+        .product-card p {
+            font-family: 'EB Garamond', serif;
+            color: var(--text-dim);
+            font-size: 18px;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+        
+        @media (max-width: 768px) {
+            .genie-juice {
+                padding: 80px 20px;
+            }
+            
+            .product-visual {
+                width: 160px;
+                height: 240px;
+            }
+            
+            .product-card h2 {
+                font-size: 36px;
+            }
+            
+            .product-card p {
+                font-size: 16px;
+            }
+        }
+        
+        /* Articles Section */
+        .articles {
+            padding: 100px 0;
+        }
+        
+        .articles h2 {
+            font-family: 'Cormorant SC', serif;
+            font-size: 48px;
+            font-weight: 600;
+            text-align: center;
+            background: linear-gradient(135deg, var(--gold-light), var(--gold-muted));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 60px;
+            letter-spacing: 3px;
+            filter: drop-shadow(0 0 20px rgba(184, 149, 111, 0.4));
+        }
+        
+        .articles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .article-card {
+            padding: 30px;
+            background: linear-gradient(135deg, rgba(61, 38, 102, 0.1), rgba(30, 26, 61, 0.2));
+            border: 1px solid rgba(184, 149, 111, 0.15);
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+        
+        .article-card:hover {
+            transform: translateY(-3px);
+            border-color: var(--gold-dim);
+            box-shadow: 0 10px 30px rgba(184, 149, 111, 0.2);
+        }
+        
+        .article-card h3 {
+            font-family: 'Cormorant SC', serif;
+            font-size: 24px;
+            font-weight: 600;
+            color: var(--gold-muted);
+            margin-bottom: 12px;
+            letter-spacing: 1px;
+        }
+        
+        .article-card p {
+            font-family: 'EB Garamond', serif;
+            color: var(--text-dim);
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        
+        .articles-link {
+            text-align: center;
+        }
+        
+        .articles-link a {
+            font-family: 'Inter', sans-serif;
+            color: var(--gold-muted);
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 500;
+            border-bottom: 1px solid var(--gold-dim);
+            transition: all 0.3s ease;
+        }
+        
+        .articles-link a:hover {
+            color: var(--gold-light);
+            border-color: var(--gold-light);
+        }
+        
+        @media (max-width: 768px) {
+            .articles {
+                padding: 80px 20px;
+            }
+            
+            .articles h2 {
+                font-size: 36px;
+            }
+            
+            .articles-grid {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+            
+            .article-card h3 {
+                font-size: 22px;
+            }
+        }
+        
+        /* Email Section */
+        .email-section {
+            padding: 100px 0;
+            background: rgba(30, 26, 61, 0.3);
+            text-align: center;
+        }
+        
+        .email-section h2 {
+            font-family: 'EB Garamond', serif;
+            font-size: 26px;
+            color: var(--gold-light);
+            margin-bottom: 30px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+        }
+        
+        .email-form {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+        
+        .email-form input {
+            font-family: 'Inter', sans-serif;
+            padding: 12px 25px;
+            background: rgba(232, 227, 245, 0.05);
+            border: 1px solid rgba(184, 149, 111, 0.3);
+            border-radius: 25px;
+            color: var(--text-light);
+            font-size: 14px;
+            width: 300px;
+            max-width: 100%;
+        }
+        
+        .email-form input::placeholder {
+            color: var(--text-dim);
+        }
+        
+        .email-form button {
+            font-family: 'Inter', sans-serif;
+            padding: 12px 30px;
+            background: linear-gradient(135deg, var(--gold-dim), var(--gold-muted));
+            color: var(--violet-deep);
+            border: none;
+            border-radius: 25px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            letter-spacing: 1px;
+        }
+        
+        .email-form button:hover {
+            box-shadow: 0 5px 20px rgba(184, 149, 111, 0.4);
+            transform: translateY(-2px);
+        }
+        
+        .trust-icons {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+        }
+        
+        .trust-icon {
+            width: 30px;
+            height: 30px;
+            background: var(--gold-dim);
+            mask: radial-gradient(circle, transparent 30%, black 31%);
+            -webkit-mask: radial-gradient(circle, transparent 30%, black 31%);
+            opacity: 0.5;
+        }
+        
+        @media (max-width: 768px) {
+            .email-section {
+                padding: 80px 20px;
+            }
+            
+            .email-section h2 {
+                font-size: 22px;
+            }
+            
+            .email-form {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .email-form input {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+        
+        /* Footer */
+        footer {
+            padding: 50px 0 30px;
+            border-top: 1px solid rgba(184, 149, 111, 0.2);
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 50px;
+            margin-bottom: 30px;
+        }
+        
+        .footer-section h4 {
+            font-family: 'Cormorant SC', serif;
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--gold-muted);
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+        }
+        
+        .footer-section p,
+        .footer-section a {
+            font-family: 'EB Garamond', serif;
+            color: var(--text-dim);
+            font-size: 14px;
+            line-height: 1.8;
+            text-decoration: none;
+        }
+        
+        .footer-section a:hover {
+            color: var(--gold-light);
+        }
+        
+        .footer-links {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(184, 149, 111, 0.1);
+            color: var(--text-dim);
+            font-size: 12px;
+            font-family: 'Inter', sans-serif;
+        }
+        
+        @media (max-width: 768px) {
+            footer {
+                padding: 40px 20px 20px;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            
+            .footer-section h4 {
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Sacred geometry background -->
+    <div class="sacred-bg"></div>
+    
+    <!-- Floating glow orbs -->
+    <div class="glow-orb"></div>
+    <div class="glow-orb"></div>
+    <div class="glow-orb"></div>
+    
+    <!-- Energy particles -->
+    <div class="energy-particles">
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="wordmark">Royalust</div>
+                <div class="nav-links" id="navLinks">
+                    <a href="#">Vision</a>
+                    <a href="#">Lineup</a>
+                    <a href="#">Membership</a>
+                    <a href="#">Retreats</a>
+                    <a href="#">Articles</a>
+                    <a href="#">Genie Juice</a>
+                    <a href="#" class="nav-cta">Enter the Field</a>
+                </div>
+                <button class="mobile-menu-toggle" onclick="document.getElementById('navLinks').classList.toggle('active')">☰</button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Transmute Lust. Build Legacy.</h1>
+            <p class="hero-subcopy">
+                Channel sexual energy into creative life force. Success is a team sport.<br>
+                Join the sovereign collective.
+            </p>
+            <div class="hero-buttons">
+                <a href="#" class="btn-primary">Join the Circle</a>
+                <a href="#" class="btn-secondary">Read the Royalust Code</a>
+            </div>
+            <div class="sigil">
+                <svg viewBox="0 0 200 200">
+                    <!-- Outer rings -->
+                    <g class="sigil-outer">
+                        <circle cx="100" cy="100" r="95" fill="none" stroke="var(--gold-dim)" stroke-width="0.3" opacity="0.4"/>
+                        <circle cx="100" cy="100" r="85" fill="none" stroke="var(--gold-dim)" stroke-width="0.5" opacity="0.5"/>
+                        <circle cx="100" cy="100" r="75" fill="none" stroke="var(--gold-muted)" stroke-width="0.3" opacity="0.6"/>
+                    </g>
+                    
+                    <!-- Sacred geometry -->
+                    <g class="sigil-inner">
+                        <polygon points="100,30 140,80 130,130 70,130 60,80" fill="none" stroke="var(--gold-light)" stroke-width="1" opacity="0.8"/>
+                        <polygon points="100,50 125,85 115,120 85,120 75,85" fill="none" stroke="var(--gold-muted)" stroke-width="0.8" opacity="0.6"/>
+                        <polygon points="100,70 115,95 100,120 85,95" fill="var(--gold-dim)" opacity="0.2"/>
+                        
+                        <!-- Inner star -->
+                        <path d="M100,60 L110,85 L135,85 L115,100 L125,125 L100,110 L75,125 L85,100 L65,85 L90,85 Z" 
+                              fill="none" stroke="var(--gold-light)" stroke-width="0.5" opacity="0.7"/>
+                    </g>
+                    
+                    <!-- Center eye -->
+                    <circle cx="100" cy="100" r="8" fill="none" stroke="var(--gold-light)" stroke-width="1" opacity="0.9"/>
+                    <circle cx="100" cy="100" r="4" fill="var(--gold-muted)" opacity="0.8"/>
+                    
+                    <!-- Decorative dots -->
+                    <g opacity="0.5">
+                        <circle cx="100" cy="30" r="2" fill="var(--gold-dim)"/>
+                        <circle cx="140" cy="80" r="2" fill="var(--gold-dim)"/>
+                        <circle cx="130" cy="130" r="2" fill="var(--gold-dim)"/>
+                        <circle cx="70" cy="130" r="2" fill="var(--gold-dim)"/>
+                        <circle cx="60" cy="80" r="2" fill="var(--gold-dim)"/>
+                    </g>
+                </svg>
+            </div>
+        </div>
+    </section>
+
+    <!-- The Royalust Code -->
+    <section class="code-section">
+        <div class="container">
+            <h2>The Royalust Code — 3 Pillars</h2>
+            <div class="pillars">
+                <div class="pillar">
+                    <h3>Transmutation</h3>
+                    <p>Desire becomes discipline. We convert raw lust into mastery, craft, and leadership.</p>
+                </div>
+                <div class="pillar">
+                    <h3>Team Sport</h3>
+                    <p>Creation scales in the collective field. Coherence beats solo grind.</p>
+                </div>
+                <div class="pillar">
+                    <h3>Sovereign Discipline</h3>
+                    <p>Rituals, boundaries, energy hygiene. Build a legacy you can stand inside.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lineup Section -->
+    <section class="lineup">
+        <div class="container">
+            <h2>Teachers & Guides</h2>
+            <div class="guides-grid">
+                <div class="guide-card">
+                    <span class="coming-soon">COMING SOON</span>
+                    <div class="avatar"></div>
+                    <h4>Fitness</h4>
+                    <p>Train strength that fuels purpose.</p>
+                </div>
+                <div class="guide-card">
+                    <span class="coming-soon">COMING SOON</span>
+                    <div class="avatar"></div>
+                    <h4>Healer</h4>
+                    <p>Somatic repair, nervous system grace.</p>
+                </div>
+                <div class="guide-card">
+                    <span class="coming-soon">COMING SOON</span>
+                    <div class="avatar"></div>
+                    <h4>Nutrition Alchemist</h4>
+                    <p>Food as clarity and charge.</p>
+                </div>
+                <div class="guide-card">
+                    <span class="coming-soon">COMING SOON</span>
+                    <div class="avatar"></div>
+                    <h4>Breathwork / Lucidity</h4>
+                    <p>States that sharpen will.</p>
+                </div>
+                <div class="guide-card">
+                    <span class="coming-soon">COMING SOON</span>
+                    <div class="avatar"></div>
+                    <h4>Somatics</h4>
+                    <p>Feel deeply. Act precisely.</p>
+                </div>
+                <div class="guide-card">
+                    <span class="coming-soon">COMING SOON</span>
+                    <div class="avatar"></div>
+                    <h4>Ritual Arts</h4>
+                    <p>Ceremony that focuses power.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Membership Tiers -->
+    <section class="membership">
+        <div class="container">
+            <h2>Membership Tiers</h2>
+            <div class="tiers">
+                <div class="tier-card">
+                    <h3>Initiate</h3>
+                    <div class="price">$19<span>/mo</span></div>
+                    <div class="tier-features">
+                        Articles, practices, member feed.
+                    </div>
+                    <a href="#" class="tier-cta">Enter Tier</a>
+                </div>
+                <div class="tier-card">
+                    <h3>Adept</h3>
+                    <div class="price">$779<span>/mo</span></div>
+                    <div class="tier-features">
+                        Live calls, workshops, monthly ritual.
+                    </div>
+                    <a href="#" class="tier-cta">Enter Tier</a>
+                </div>
+                <div class="tier-card">
+                    <h3>Royal Circle</h3>
+                    <div class="price">$3350<span>/mo</span></div>
+                    <div class="tier-features">
+                        Small-group intensives, private forum, priority retreat access.
+                    </div>
+                    <a href="#" class="tier-cta">Enter Tier</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Retreats Section -->
+    <section class="retreats">
+        <div class="container">
+            <h2>Retreats in Hawaiʻi</h2>
+            <p class="retreats-subtitle">From 3-day immersions to 10-day transformations.</p>
+            <div class="retreat-features">
+                <span>breathwork</span>
+                <span>·</span>
+                <span>somatics</span>
+                <span>·</span>
+                <span>ocean rites</span>
+                <span>·</span>
+                <span>strength training</span>
+                <span>·</span>
+                <span>lucid fieldwork</span>
+            </div>
+            <a href="#" class="btn-primary">Apply for Next Cohort</a>
+        </div>
+    </section>
+
+    <!-- Genie Juice Section -->
+    <section class="genie-juice">
+        <div class="container">
+            <div class="product-card">
+                <div class="product-visual"></div>
+                <h2>Genie Juice</h2>
+                <p>A ritual tonic for clarity, vitality, and focused creation.</p>
+                <a href="#" class="btn-secondary">Get Notified</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Articles Section -->
+    <section class="articles">
+        <div class="container">
+            <h2>Featured Articles</h2>
+            <div class="articles-grid">
+                <div class="article-card">
+                    <h3>Stop Forcing Motivation: Rites > Hacks</h3>
+                    <p>Why identity-anchored rites outlast willpower.</p>
+                </div>
+                <div class="article-card">
+                    <h3>Success as Team Sport</h3>
+                    <p>Collective fields multiply output.</p>
+                </div>
+                <div class="article-card">
+                    <h3>Energy Hygiene for Builders</h3>
+                    <p>Keep the signal clean.</p>
+                </div>
+            </div>
+            <div class="articles-link">
+                <a href="#">Explore All Articles</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Email Capture -->
+    <section class="email-section">
+        <div class="container">
+            <h2>Enter the field. Receive rites, practices, and invites.</h2>
+            <div class="email-form">
+                <input type="email" placeholder="Your email">
+                <button>Join</button>
+            </div>
+            <div class="trust-icons">
+                <div class="trust-icon"></div>
+                <div class="trust-icon"></div>
+                <div class="trust-icon"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>About Royalust</h4>
+                    <p>A sovereign collective transmuting desire into creative life force. Building legacy through ritual, discipline, and coherent teamwork.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Explore</h4>
+                    <div class="footer-links">
+                        <a href="#">Vision</a>
+                        <a href="#">Lineup</a>
+                        <a href="#">Membership</a>
+                        <a href="#">Retreats</a>
+                        <a href="#">Articles</a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Connect</h4>
+                    <div class="footer-links">
+                        <a href="#">Contact</a>
+                        <a href="#">Join the Circle</a>
+                        <a href="#">Disclaimer</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                © Royalust. All rights reserved.
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
